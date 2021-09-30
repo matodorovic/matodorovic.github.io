@@ -3,6 +3,7 @@ console.log("script.js is loaded")
 
 // Deklaration av variabler
 let completedCount = 0;
+let listCount = 0;
 
 // HTML-element
 const button = document.querySelector("button");
@@ -34,6 +35,8 @@ button.addEventListener("click", function () {
     const itemLabel = document.createElement("span");
     itemLabel.innerText = text;
     item.appendChild(itemLabel);
+    listCount++;
+    label.innerText =  `${completedCount} av ${listCount} completed`;
 
     const trashcan = document.createElement("span");
     trashcan.innerHTML = "&#x1F5D1";
@@ -51,19 +54,20 @@ button.addEventListener("click", function () {
             completedCount++;
         }
 
-        label.innerText =  `${completedCount} completed`;
+        label.innerText =  `${completedCount} av ${listCount} completed`;
     });
 
        
     // Lägg till klick på vår trashcan
     trashcan.addEventListener("click", function() {
         item.remove();
+        listCount--;
         
         if ( item.getAttribute("class") == "completed") {
             completedCount--;
         }
         
-        label.innerText =  `${completedCount} completed`;
+        label.innerText =  `${completedCount} av ${listCount} completed`;
     });
 
     // Nöllställ input
