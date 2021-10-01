@@ -62,7 +62,6 @@ button.addEventListener("click", function () {
        
     // Lägg till klick på vår trashcan
     trashcan.addEventListener("click", function() {
-        
         var nummer = listan.indexOf(text);
         delete listan[nummer];
         
